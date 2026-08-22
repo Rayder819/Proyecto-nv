@@ -1,6 +1,6 @@
 const video = document.querySelector('.hero-video');
 const hero = document.querySelector('.hero');
-const hamburger = document.querySelector('.hamburger');
+const hamburger = document.querySelector('.hamburguesa');
 const menu = document.querySelector('nav.menu ul');
 
 hero.addEventListener('mouseenter', function() {
