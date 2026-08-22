@@ -117,6 +117,7 @@ nav.menu ul li {
         background-color: #141414;
         padding: 20px;
         gap: 10px;
+        z-index: 4;
     }
 
     nav.menu ul.active {
