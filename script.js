@@ -1,5 +1,7 @@
 const video = document.querySelector('.hero-video');
 const hero = document.querySelector('.hero');
+const hamburger = document.querySelector('.hamburger');
+const menu = document.querySelector('nav.menu ul');
 
 hero.addEventListener('mouseenter', function() {
     video.play();
@@ -17,4 +19,8 @@ hero.addEventListener('touchstart', function() {
 hero.addEventListener('touchend', function() {
     video.pause();
     video.currentTime = 0;
+});
+
+hamburger.addEventListener('click', function() {
+    menu.classList.toggle('active');
 });
