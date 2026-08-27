@@ -175,7 +175,10 @@ nav.menu ul li {
     }
 
     .hero-content h1 {
-        font-size: 24px;
+        max-width: 300px;
+        font-size: 22px;
+        letter-spacing: 0;
+        line-height: 1.15;
         margin-bottom: 12px;
     }
 
