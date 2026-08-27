@@ -90,7 +90,7 @@ nav.menu ul li {
 .hero-content h1 {
     font-family: 'Arvo', sans-serif;
     letter-spacing: 1px;
-    font-size: 40px;
+    font-size: clamp(26px, 3.5vw, 40px);
     margin-bottom: 16px;
 }
 
@@ -113,6 +113,16 @@ nav.menu ul li {
     font-size: 16px;
 }
 
+@media (max-width: 1024px) {
+    .hero {
+        padding: 0 24px 28px;
+    }
+
+    .hero-content {
+        max-width: 460px;
+    }
+}
+
 @media (max-width: 768px) {
     header {
         padding: 16px 20px;
@@ -127,7 +137,11 @@ nav.menu ul li {
     }
 
     .carta {
-    width: 140px;
+        width: 140px;
+    }
+
+    .carta:hover {
+        transform: none;
     }
     
     nav.menu ul {
