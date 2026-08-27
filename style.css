@@ -88,6 +88,8 @@ nav.menu ul li {
     max-width: 600px;
 }
 .hero-content h1 {
+    font-family: 'Arvo', sans-serif;
+    letter-spacing: 1px;
     font-size: 40px;
     margin-bottom: 16px;
 }
@@ -124,6 +126,10 @@ nav.menu ul li {
         display: block;
     }
 
+    .carta {
+    width: 140px;
+    }
+    
     nav.menu ul {
         display: none;
         flex-direction: column;
