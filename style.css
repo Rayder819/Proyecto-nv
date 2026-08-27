@@ -232,3 +232,26 @@ nav.menu ul li {
 .fila-cartas::-webkit-scrollbar {
     display: none;
 }
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        max-width: 270px;
+        font-size: 20px;
+    }
+
+    .fila {
+        padding: 24px 20px;
+    }
+
+    .fila h2 {
+        font-size: 20px;
+    }
+
+    .carta {
+        width: 140px;
+    }
+
+    .carta img {
+        height: 220px;
+    }
+}
