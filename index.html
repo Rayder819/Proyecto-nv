@@ -11,14 +11,21 @@
 </head>
 <body>
     <header>
-        <a class="logo">Loveflix</a>
+        <a class="logo" href="#">Loveflix</a>
         <nav class="menu">
             <ul>
-                <li>Colección</li>
-                <li>Nosotros</li>
-                <li>Especial</li>
+                <li><a class="activo" href="#coleccion">Inicio</a></li>
+                <li><a href="#coleccion">Colección</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#especial">Especial</a></li>
             </ul>
         </nav>
+        <div class="acciones-nav">
+            <button class="accion-nav" aria-label="Buscar">⌕</button>
+            <button class="accion-nav notificacion" aria-label="Notificaciones">♧<span>1</span></button>
+            <button class="perfil-nav" aria-label="Abrir perfil">N</button>
+            <button class="flecha-nav" aria-label="Abrir opciones">⌄</button>
+        </div>
         <button class="hamburguesa">☰</button>
     </header>
     <section class="hero">
@@ -32,7 +39,7 @@
         </div>
     </section>
     <section class="fila">
-        <h2>Colección</h2>
+        <h2 id="coleccion">Colección</h2>
         <div class="fila-cartas">
             <div class="carta">
                 <img src="fotos/img1.JPEG" alt="Imagen 1">
@@ -50,7 +57,7 @@
                 <img src="fotos/img1.JPEG" alt="Imagen 1">
             </div>
         </div>
-        <h2>Nosotros</h2>
+        <h2 id="nosotros">Nosotros</h2>
         <div class="fila-cartas">
             <div class="carta">
                 <img src="fotos/img1.JPEG" alt="Imagen 1">
@@ -68,7 +75,7 @@
                 <img src="fotos/img1.JPEG" alt="Imagen 1">
             </div>
         </div>
-        <h2>Especial</h2>
+        <h2 id="especial">Especial</h2>
         <div class="fila-cartas">
             <div class="carta">
                 <img src="fotos/img1.JPEG" alt="Imagen 1">
