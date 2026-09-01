@@ -1,0 +1,40 @@
+:root {
+    --bg: #141414;
+    --bg-soft: #242424;
+    --text: #ffffff;
+    --text-soft: #d7d7d7;
+    --text-muted: #aaa;
+    --accent: #e50914;
+    --accent-2: #ffb000;
+    --shadow: rgba(0, 0, 0, 0.55);
+    --card-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+button,
+input,
+a {
+    font: inherit;
+}
+
+img,
+video {
+    display: block;
+    max-width: 100%;
+}
