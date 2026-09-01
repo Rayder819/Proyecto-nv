@@ -105,7 +105,7 @@ const enlaceRegreso = document.querySelector('.volver');
 enlaceRegreso.addEventListener('click', function() {
     sessionStorage.setItem('animarRegreso', 'true');
 });
-enlaceRegreso.href = retorno === 'inicio' ? 'index.html' : `index.html#${retorno}`;
+enlaceRegreso.href = retorno === 'inicio' ? 'galeria.html' : `galeria.html#${retorno}`;
 enlaceRegreso.textContent = retorno === 'inicio' ? '← Volver al inicio' : `← Volver a ${nombresSeccion[retorno]}`;
 document.querySelector(`[data-seccion="${seccion}"]`).classList.add('activo');
 document.querySelector('#titulo').textContent = historia.titulo;

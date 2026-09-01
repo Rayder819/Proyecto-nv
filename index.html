@@ -1,117 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Cumple mes ❤️</title>
+    <title>Perfil</title>
+    <style>
+        :root {
+            --bg: #070707;
+            --panel: rgba(20, 20, 20, 0.8);
+            --line: rgba(255,255,255,0.14);
+            --text: #ffffff;
+            --muted: #d2d2d2;
+            --accent: #e50914;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        body {
+            position: relative;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .video-fondo {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.42) saturate(1.1);
+            z-index: 0;
+            opacity: 0;
+            display: none;
+            transition: opacity 1s ease 0.2s;
+        }
+
+        .video-fondo.activo {
+            opacity: 1;
+            display: block;
+            z-index: 10;
+            animation: videoFadeIn 1.2s ease;
+        }
+
+        @keyframes videoFadeIn {
+            from {
+                opacity: 0;
+                filter: brightness(0) saturate(0);
+            }
+            to {
+                opacity: 1;
+                filter: brightness(0.42) saturate(1.1);
+            }
+        }
+
+        .capa {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+            transition: opacity 1.2s ease, background 1.2s ease, z-index 1.2s ease;
+        }
+
+        .capa.fade-negro {
+            opacity: 1;
+            background: rgba(0,0,0,1);
+            z-index: 0;
+        }
+
+        .perfil-wrap {
+            position: relative;
+            z-index: 2;
+            width: min(520px, calc(100% - 32px));
+            padding: 40px 32px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--panel);
+            box-shadow: 0 22px 60px rgba(0,0,0,0.55);
+            backdrop-filter: blur(6px);
+            text-align: center;
+            animation: fadeInScale 0.8s ease-out;
+            transition: opacity 1.2s ease, filter 1.2s ease;
+        }
+
+        .perfil-wrap.fade-out {
+            opacity: 0;
+            filter: blur(15px) brightness(0.3);
+            pointer-events: none;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-family: 'Arvo', serif;
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffb3c1, #e50914);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .subtitulo {
+            margin: 0 0 12px;
+            font-size: clamp(14px, 2vw, 18px);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d2d2d2;
+            animation: fadeInDown 0.6s ease-out 0.2s both;
+        }
+
+        .intro-texto {
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .perfil-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .avatar {
+            width: 240px;
+            height: 240px;
+            overflow: hidden;
+            border-radius: 18px;
+            border: 3px solid rgba(255,255,255,0.18);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.45), 0 0 40px rgba(229, 9, 20, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 60px rgba(229, 9, 20, 0.4);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .descripcion {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #d2d2d2;
+            line-height: 1.6;
+            max-width: 320px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .entrar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #e50914, #b20d17);
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 24px rgba(229, 9, 20, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .entrar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .entrar:hover::before {
+            left: 100%;
+        }
+
+        .entrar:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(229, 9, 20, 0.5);
+        }
+
+        .entrar:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .icono-flecha {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .entrar:hover .icono-flecha {
+            transform: translateX(6px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <a class="logo" data-inicio href="#">Loveflix</a>
-        <nav class="menu">
-            <ul>
-                <li><a class="activo" data-filtro="todos" href="#coleccion">Inicio</a></li>
-                <li><a data-filtro="coleccion" href="#coleccion">Colección</a></li>
-                <li><a data-filtro="nosotros" href="#nosotros">Nosotros</a></li>
-                <li><a data-filtro="especial" href="#especial">Especial</a></li>
-            </ul>
-        </nav>
-        <div class="acciones-nav">
-            <button class="accion-nav" id="boton-busqueda" aria-label="Buscar" title="Buscar"><span class="icono-busqueda" aria-hidden="true"></span></button>
-            <div class="buscador-nav">
-                <input id="busqueda" type="search" placeholder="Buscar historias" aria-label="Buscar historias">
+    <video id="intro-audio" class="video-fondo" muted playsinline preload="auto" aria-hidden="true">
+        <source src="intro/video.mp4" type="video/mp4">
+    </video>
+    <div class="capa"></div>
+
+    <div class="perfil-wrap">
+        <div class="intro-texto">
+            <p class="subtitulo">Bienvenido a</p>
+            <h1>Nuestra Historia</h1>
+        </div>
+
+        <div class="perfil-card">
+            <div class="avatar">
+                <img src="fotosia/ftoperfil.jpg" alt="Nuestra Historia">
             </div>
-            <button class="accion-nav notificacion" id="boton-notificacion" aria-label="Abrir notificación" title="Abrir notificación"><span class="icono-campana" aria-hidden="true"></span><span class="contador-notificacion">1</span></button>
-            <button class="perfil-nav" aria-label="Abrir perfil">N</button>
-            <button class="flecha-nav" aria-label="Abrir opciones">⌄</button>
         </div>
-        <button class="hamburguesa">☰</button>
-    </header>
-    <section class="hero">
-        <video class="hero-video" poster="fotos/img1.JPEG" muted loop playsinline>
-        <source src="videos/videoejm.mp4" type="video/mp4">
-        </video>
-        <img class="hero-poster" src="fotos/img1.JPEG" alt="Nicolás y Julieta">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Feliz cumple mes <br> mi amor ❤️</h1>
-        </div>
-    </section>
-    <aside class="notificacion-mensaje" id="notificacion-mensaje" role="status" aria-live="polite" aria-hidden="true">
-        <button class="cerrar-notificacion" id="cerrar-notificacion" aria-label="Cerrar notificación">&times;</button>
-        <strong>Para ti ❤️</strong>
-        <p>No te imaginas todo lo que siento por ti, es tanto tanto que hice todo esto especialmente para ti</p>
-    </aside>
-    <section class="fila">
-        <div class="seccion-catalogo" data-seccion="coleccion">
-        <h2 id="coleccion">Colección</h2>
-        <p class="dedicatoria-seccion">Cada recuerdo que guardamos aquí tiene una parte de nosotros. Esta colección reúne esos momentos que hacen que nuestra historia sea tan especial y que siempre quiera volver a elegirte.</p>
-        <div class="fila-cartas">
-            <a class="carta" data-titulo="Un momento para guardar" href="detalle.html?historia=coleccionVideo2">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Pequeños instantes" href="detalle.html?historia=coleccionCollage1">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Nuestra película" href="detalle.html?historia=coleccionVideo1">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Tú y yo" href="detalle.html?historia=coleccionCollage2">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Para siempre volvería a elegirte" href="detalle.html?historia=coleccionCollage3">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-        </div>
-        </div>
-        <div class="seccion-catalogo" data-seccion="nosotros">
-        <h2 id="nosotros">Nosotros</h2>
-        <p class="dedicatoria-seccion">Nosotros somos todas esas risas inesperadas, los abrazos que arreglan cualquier día y la tranquilidad de saber que, contigo, estoy exactamente donde quiero estar.</p>
-        <div class="fila-cartas">
-            <a class="carta" data-titulo="Lo que somos" href="detalle.html?historia=nosotrosCollage1">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Un día contigo" href="detalle.html?historia=nosotrosVideo1">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Nuestro rincón" href="detalle.html?historia=nosotrosCollage2">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Momentos que quedan" href="detalle.html?historia=nosotrosCollage3">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Siempre juntos" href="detalle.html?historia=nosotrosVideo2">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-        </div>
-        </div>
-        <div class="seccion-catalogo" data-seccion="especial">
-        <h2 id="especial">Especial</h2>
-        <p class="dedicatoria-seccion">Esta parte es para ti, porque hay recuerdos que merecen un lugar especial. Gracias por llenar mi vida de amor, por cada detalle y por hacer que lo nuestro se sienta único.</p>
-        <div class="fila-cartas">
-            <a class="carta" data-titulo="Un recuerdo especial" href="detalle.html?historia=especialVideo1">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Solo tú" href="detalle.html?historia=especialCollage1">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Nuestra magia" href="detalle.html?historia=especialCollage2">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Para volver a mirar" href="detalle.html?historia=especialVideo2">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-            <a class="carta" data-titulo="Te amo" href="detalle.html?historia=especialCollage3">
-                <img src="fotos/img1.JPEG" alt="Imagen 1">
-            </a>
-        </div>
-        </div>
-    </section>
-    <script src="portadas.js"></script>
-    <script src="script.js"></script>
+
+        <button class="entrar" id="entrarPerfil" type="button">
+            <span>Entrar</span>
+            <span class="icono-flecha">→</span>
+        </button>
+    </div>
+
+    <script>
+        const video = document.getElementById('intro-audio');
+        const entrar = document.getElementById('entrarPerfil');
+        const perfil = document.querySelector('.perfil-wrap');
+        const capa = document.querySelector('.capa');
+
+        entrar.addEventListener('click', function () {
+            // Agregar animación de fade a negro suave
+            perfil.classList.add('fade-out');
+            capa.classList.add('fade-negro');
+
+            // Esperar a que se complete la animación de fade (1.2s)
+            setTimeout(function () {
+                // Mostrar el video con animación elegante
+                video.classList.add('activo');
+
+                // Reproducir el video con sonido
+                video.muted = false;
+                video.volume = 1;
+                video.currentTime = 0;
+                video.play().catch(function () {});
+
+                // Redirigir cuando termine el video
+                video.addEventListener('ended', function () {
+                    window.location.href = 'galeria.html';
+                }, { once: true });
+            }, 1200);  // Duración de la animación de fade suave
+        });
+    </script>
 </body>
 </html>

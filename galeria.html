@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Cumple mes ❤️</title>
+</head>
+<body>
+    <header>
+        <a class="logo" data-inicio href="#">Loveflix</a>
+        <nav class="menu">
+            <ul>
+                <li><a class="activo" data-filtro="todos" href="#coleccion">Inicio</a></li>
+                <li><a data-filtro="coleccion" href="#coleccion">Colección</a></li>
+                <li><a data-filtro="nosotros" href="#nosotros">Nosotros</a></li>
+                <li><a data-filtro="especial" href="#especial">Especial</a></li>
+            </ul>
+        </nav>
+        <div class="acciones-nav">
+            <button class="accion-nav" id="boton-busqueda" aria-label="Buscar" title="Buscar"><span class="icono-busqueda" aria-hidden="true"></span></button>
+            <div class="buscador-nav">
+                <input id="busqueda" type="search" placeholder="Buscar historias" aria-label="Buscar historias">
+            </div>
+            <button class="accion-nav notificacion" id="boton-notificacion" aria-label="Abrir notificación" title="Abrir notificación"><span class="icono-campana" aria-hidden="true"></span><span class="contador-notificacion">1</span></button>
+            <button class="perfil-nav" aria-label="Abrir perfil">N</button>
+            <button class="flecha-nav" aria-label="Abrir opciones">⌄</button>
+        </div>
+        <button class="hamburguesa">☰</button>
+    </header>
+    <section class="hero">
+        <video class="hero-video" poster="fotos/img1.JPEG" muted loop playsinline>
+        <source src="videos/videoejm.mp4" type="video/mp4">
+        </video>
+        <img class="hero-poster" src="fotos/img1.JPEG" alt="Nicolás y Julieta">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Feliz cumple mes <br> mi amor ❤️</h1>
+        </div>
+    </section>
+    <aside class="notificacion-mensaje" id="notificacion-mensaje" role="status" aria-live="polite" aria-hidden="true">
+        <button class="cerrar-notificacion" id="cerrar-notificacion" aria-label="Cerrar notificación">&times;</button>
+        <strong>Para ti ❤️</strong>
+        <p>No te imaginas todo lo que siento por ti, es tanto tanto que hice todo esto especialmente para ti</p>
+    </aside>
+    <section class="fila">
+        <div class="seccion-catalogo" data-seccion="coleccion">
+        <h2 id="coleccion">Colección</h2>
+        <p class="dedicatoria-seccion">Cada recuerdo que guardamos aquí tiene una parte de nosotros. Esta colección reúne esos momentos que hacen que nuestra historia sea tan especial y que siempre quiera volver a elegirte.</p>
+        <div class="fila-cartas">
+            <a class="carta" data-titulo="Un momento para guardar" href="detalle.html?historia=coleccionVideo2">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Pequeños instantes" href="detalle.html?historia=coleccionCollage1">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Nuestra película" href="detalle.html?historia=coleccionVideo1">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Tú y yo" href="detalle.html?historia=coleccionCollage2">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Para siempre volvería a elegirte" href="detalle.html?historia=coleccionCollage3">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+        </div>
+        </div>
+        <div class="seccion-catalogo" data-seccion="nosotros">
+        <h2 id="nosotros">Nosotros</h2>
+        <p class="dedicatoria-seccion">Nosotros somos todas esas risas inesperadas, los abrazos que arreglan cualquier día y la tranquilidad de saber que, contigo, estoy exactamente donde quiero estar.</p>
+        <div class="fila-cartas">
+            <a class="carta" data-titulo="Lo que somos" href="detalle.html?historia=nosotrosCollage1">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Un día contigo" href="detalle.html?historia=nosotrosVideo1">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Nuestro rincón" href="detalle.html?historia=nosotrosCollage2">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Momentos que quedan" href="detalle.html?historia=nosotrosCollage3">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Siempre juntos" href="detalle.html?historia=nosotrosVideo2">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+        </div>
+        </div>
+        <div class="seccion-catalogo" data-seccion="especial">
+        <h2 id="especial">Especial</h2>
+        <p class="dedicatoria-seccion">Esta parte es para ti, porque hay recuerdos que merecen un lugar especial. Gracias por llenar mi vida de amor, por cada detalle y por hacer que lo nuestro se sienta único.</p>
+        <div class="fila-cartas">
+            <a class="carta" data-titulo="Un recuerdo especial" href="detalle.html?historia=especialVideo1">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Solo tú" href="detalle.html?historia=especialCollage1">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Nuestra magia" href="detalle.html?historia=especialCollage2">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Para volver a mirar" href="detalle.html?historia=especialVideo2">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+            <a class="carta" data-titulo="Te amo" href="detalle.html?historia=especialCollage3">
+                <img src="fotos/img1.JPEG" alt="Imagen 1">
+            </a>
+        </div>
+        </div>
+    </section>
+    <script src="portadas.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
