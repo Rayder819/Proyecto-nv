@@ -307,7 +307,7 @@ header.scrolled {
 
 @media (max-width: 768px) {
     header {
-        padding: 16px 20px;
+        padding: 14px 16px;
     }
 
     .logo {
@@ -317,10 +317,22 @@ header.scrolled {
     .hamburguesa {
         display: block;
         margin-left: auto;
+        font-size: 26px;
     }
 
-    .acciones-nav { display: flex; gap: 10px; }
-    .perfil-nav, .flecha-nav { display: none; }
+    .acciones-nav {
+        display: flex;
+        gap: 8px;
+        margin-left: 0;
+    }
+
+    .perfil-nav {
+        display: grid;
+        width: 32px;
+        height: 32px;
+    }
+
+    .flecha-nav { display: none; }
     .buscador-nav.activo { width: 145px; }
     #busqueda { width: 145px; }
 
@@ -332,17 +344,26 @@ header.scrolled {
         transform: none;
     }
     
+    nav.menu {
+        position: relative;
+        margin-left: auto;
+    }
+
     nav.menu ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
+        top: calc(100% + 10px);
+        right: 0;
+        width: max-content;
+        min-width: max-content;
         background-color: rgba(20, 20, 20, 0.98);
-        padding: 20px;
-        gap: 10px;
+        padding: 10px 12px;
+        gap: 4px;
         z-index: 999;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     }
 
     nav.menu ul.active {
@@ -350,8 +371,9 @@ header.scrolled {
     }
 
     nav.menu a {
-        padding: 11px 13px;
+        padding: 8px 12px;
         font-size: 14px;
+        white-space: nowrap;
     }
 
     .hero {
