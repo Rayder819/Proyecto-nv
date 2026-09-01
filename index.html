@@ -43,6 +43,7 @@
             opacity: 0;
             display: none;
             transition: opacity 1s ease 0.2s;
+            background: #000;
         }
 
         .video-fondo.activo {
@@ -98,8 +99,11 @@
             }
 
             .video-fondo {
+                width: 100vw;
+                height: 100vh;
                 object-fit: contain;
                 background: #000;
+                display: block;
             }
 
             .perfil-wrap {
