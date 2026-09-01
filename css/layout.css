@@ -307,6 +307,7 @@ header.scrolled {
 
 @media (max-width: 768px) {
     header {
+        gap: 8px;
         padding: 14px 16px;
     }
 
@@ -316,14 +317,14 @@ header.scrolled {
 
     .hamburguesa {
         display: block;
-        margin-left: auto;
+        margin-left: 0;
         font-size: 26px;
     }
 
     .acciones-nav {
         display: flex;
         gap: 8px;
-        margin-left: 0;
+        margin-left: auto;
     }
 
     .perfil-nav {
@@ -345,18 +346,18 @@ header.scrolled {
     }
     
     nav.menu {
-        position: relative;
-        margin-left: auto;
+        position: static;
+        margin-left: 0;
     }
 
     nav.menu ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: calc(100% + 10px);
-        right: 0;
-        width: max-content;
-        min-width: max-content;
+        top: 62px;
+        right: 16px;
+        width: min(220px, calc(100vw - 32px));
+        min-width: 0;
         background-color: rgba(20, 20, 20, 0.98);
         padding: 10px 12px;
         gap: 4px;
