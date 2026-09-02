@@ -82,7 +82,7 @@ header.scrolled {
     height: 100%;
     max-height: none;
     aspect-ratio: auto;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .marco-video::after {

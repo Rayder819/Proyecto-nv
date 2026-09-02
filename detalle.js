@@ -233,12 +233,17 @@ function crearControlesVideo(video, marcoVideo, botonReproducir) {
     });
 
     controles.querySelector('.boton-pantalla').addEventListener('click', function() {
-        if (document.fullscreenElement) document.exitFullscreen();
-        else {
-            marcoVideo.classList.add('pantalla-completa');
-            marcoVideo.requestFullscreen().catch(() => {
-                marcoVideo.classList.remove('pantalla-completa');
-            });
+        if (video.webkitEnterFullscreen) {
+            video.webkitEnterFullscreen();
+        } else {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                marcoVideo.classList.add('pantalla-completa');
+                marcoVideo.requestFullscreen().catch(() => {
+                    marcoVideo.classList.remove('pantalla-completa');
+                });
+            }
         }
     });
 
