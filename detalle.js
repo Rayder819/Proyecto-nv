@@ -328,10 +328,11 @@ function crearCollage() {
     const archivos = historia.archivos || Array(historia.cantidad).fill(historia.portada);
 
     archivos.forEach((ruta, indice) => {
-        if (ruta.toLowerCase().endsWith('.mp4')) {
-            const contenedor = document.createElement('div');
-            contenedor.className = 'item-collage-video';
+        const contenedor = document.createElement('div');
+        contenedor.className = 'item-collage-elemento';
 
+        if (ruta.toLowerCase().endsWith('.mp4')) {
+            contenedor.classList.add('item-collage-video');
             const videoCollage = document.createElement('video');
             videoCollage.src = ruta;
             videoCollage.autoplay = true;
@@ -339,7 +340,6 @@ function crearCollage() {
             videoCollage.loop = true;
             videoCollage.playsInline = true;
 
-            // Detectar orientación real al cargar el video
             videoCollage.addEventListener('loadedmetadata', () => {
                 if (videoCollage.videoHeight > videoCollage.videoWidth) {
                     contenedor.classList.add('es-vertical');
@@ -366,17 +366,33 @@ function crearCollage() {
                 else videoCollage.pause();
             });
 
+            contenedor.addEventListener('dblclick', () => {
+                if (videoCollage.webkitEnterFullscreen) {
+                    videoCollage.webkitEnterFullscreen();
+                } else if (contenedor.requestFullscreen) {
+                    contenedor.requestFullscreen();
+                }
+            });
+
             contenedor.append(videoCollage, btnAudio);
-            collage.append(contenedor);
         } else {
             const imagen = document.createElement('img');
             imagen.src = ruta;
             imagen.alt = `Recuerdo ${indice + 1} de ${historia.titulo}`;
-            collage.append(imagen);
+            
+            contenedor.addEventListener('click', () => {
+                const modal = document.createElement('div');
+                modal.className = 'modal-imagen-completa';
+                modal.innerHTML = `<img src="${ruta}" alt="Ampliada"><button class="cerrar-modal">&times;</button>`;
+                document.body.append(modal);
+                modal.addEventListener('click', () => modal.remove());
+            });
+
+            contenedor.append(imagen);
         }
+        collage.append(contenedor);
     });
     contenido.append(collage);
 }
-
 if (historia.tipo === 'video') crearVideo();
 else crearCollage();
