@@ -357,20 +357,32 @@ function crearCollage() {
             btnAudio.addEventListener('click', (evento) => {
                 evento.stopPropagation(); 
                 videoCollage.muted = !videoCollage.muted;
-                btnAudio.innerHTML = videoCollage.muted ? svgVolOff : svgVolOn;
-                btnAudio.style.color = videoCollage.muted ? 'white' : '#e50914';
+                
+                if (videoCollage.muted) {
+                    btnAudio.innerHTML = svgVolOff;
+                    btnAudio.style.color = 'white';
+                } else {
+                    btnAudio.innerHTML = svgVolOn;
+                    btnAudio.style.color = '#e50914';
+                }
             });
-
+            
+            document.addEventListener('fullscreenchange', () => {
+                if (!document.fullscreenElement && videoCollage.muted) {
+                    videoCollage.muted = true;
+                    btnAudio.innerHTML = svgVolOff;
+                    btnAudio.style.color = 'white';
+                }
+            });
             contenedor.addEventListener('click', () => {
-                if (videoCollage.paused) videoCollage.play();
-                else videoCollage.pause();
-            });
-
-            contenedor.addEventListener('dblclick', () => {
                 if (videoCollage.webkitEnterFullscreen) {
                     videoCollage.webkitEnterFullscreen();
-                } else if (contenedor.requestFullscreen) {
-                    contenedor.requestFullscreen();
+                } else if (videoCollage.requestFullscreen) {
+                    videoCollage.requestFullscreen();
+                } else if (videoCollage.paused) {
+                    videoCollage.play();
+                } else {
+                    videoCollage.pause();
                 }
             });
 
@@ -380,6 +392,7 @@ function crearCollage() {
             imagen.src = ruta;
             imagen.alt = `Recuerdo ${indice + 1} de ${historia.titulo}`;
             
+
             contenedor.addEventListener('click', () => {
                 const modal = document.createElement('div');
                 modal.className = 'modal-imagen-completa';
@@ -393,6 +406,8 @@ function crearCollage() {
         collage.append(contenedor);
     });
     contenido.append(collage);
+    
 }
+
 if (historia.tipo === 'video') crearVideo();
 else crearCollage();
