@@ -151,14 +151,61 @@ header.scrolled {
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
+    display: block;
+}
+.item-collage-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #090909; /* Agrega un fondo oscuro para disimular los espacios sobrantes */
+    border-radius: 8px;
+    display: block;
 }
 
-.collage--three img:first-child { grid-column: span 2; grid-row: span 2; }
+.collage--three > :first-child { grid-column: span 2; grid-row: span 2; }
 .collage--four { grid-template-columns: repeat(2, 1fr); }
-.collage--four img:first-child { grid-row: span 2; }
-.collage--five img:first-child { grid-column: span 2; }
+.collage--four > :first-child { grid-row: span 2; }
+.collage--five > :first-child { grid-column: span 2; }
 .collage--six { grid-template-columns: repeat(3, 1fr); }
 
+/* CONTROLES MINI PARA VIDEOS EN COLLAGE */
+.item-collage-video {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn-mini-audio {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.btn-mini-audio:hover {
+    background: rgba(0, 0, 0, 0.85);
+    transform: scale(1.1);
+}
+
+.btn-mini-audio svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
 
 .controles-video {
     position: absolute;
@@ -390,4 +437,18 @@ header.scrolled {
     .collage--six { grid-template-columns: repeat(2, 1fr); }
     .collage--six img:first-child { grid-column: span 2; }
     .dedicatoria { font-size: 16px; }
+}
+
+.item-collage-video.es-vertical video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #0b0b0b;
+}
+
+.item-collage-video.es-horizontal video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #0b0b0b;
 }
