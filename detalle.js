@@ -11,7 +11,7 @@ const historias = {
         titulo: 'Nuestra película',
         meta: 'Video especial · Nuestra colección',
         tipo: 'video',
-        archivo: 'videos/video1.mp4',
+        archivo: 'videos/video3.mp4',
         boton: 'Reproducir nuestra película',
         texto: 'Contigo, hasta los días más sencillos se convierten en recuerdos que quiero volver a vivir.'
     },
@@ -58,7 +58,7 @@ const historias = {
     },
     nosotrosVideo2: {
         titulo: 'Siempre juntos', meta: 'Video · Nosotros', tipo: 'video',
-        archivo: 'videos    /video2.mp4',
+        archivo: 'videos/video2.mp4',
         boton: 'Reproducir siempre juntos',
         texto: 'Qué suerte la mía poder compartir este camino contigo.'
     },
@@ -114,70 +114,138 @@ document.querySelector('#dedicatoria').textContent = historia.texto;
 document.title = `Loveflix | ${historia.titulo}`;
 
 function crearControlesVideo(video, marcoVideo, botonReproducir) {
+    const svgPlay = '<svg class="icono-svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+    const svgPause = '<svg class="icono-svg" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+    const svgVolOn = '<svg class="icono-svg" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+    const svgVolOff = '<svg class="icono-svg" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+    const svgPantalla = '<svg class="icono-svg" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>';
+
     const controles = document.createElement('div');
     controles.className = 'controles-video';
-    controles.innerHTML = '<button class="control-video boton-pausa" type="button" aria-label="Pausar video"><span class="icono-pausa"></span></button><input class="barra-progreso" type="range" min="0" max="100" value="0" aria-label="Progreso del video"><span class="tiempo-video">0:00</span><button class="control-video boton-volumen" type="button" aria-label="Silenciar video"><span class="icono-volumen"></span></button><input class="barra-volumen" type="range" min="0" max="100" value="100" aria-label="Volumen del video"><button class="control-video boton-pantalla" type="button" aria-label="Ver en pantalla completa"><span class="icono-pantalla"></span></button>';
+    
+    controles.innerHTML = `
+        <div class="progreso-contenedor">
+            <input class="barra-progreso" type="range" min="0" max="100" step="0.1" value="0" aria-label="Progreso del video">
+        </div>
+        <div class="controles-inferiores">
+            <div class="controles-izquierda">
+                <button class="control-video boton-pausa" type="button" aria-label="Reproducir video">${svgPlay}</button>
+                <div class="control-volumen-grupo">
+                    <button class="control-video boton-volumen" type="button" aria-label="Silenciar video">${svgVolOn}</button>
+                    <input class="barra-volumen" type="range" min="0" max="100" value="100" aria-label="Volumen del video">
+                </div>
+                <span class="tiempo-video">0:00 / 0:00</span>
+            </div>
+            <div class="controles-derecha">
+                <button class="control-video boton-pantalla" type="button" aria-label="Ver en pantalla completa">${svgPantalla}</button>
+            </div>
+        </div>
+    `;
 
     const botonPausa = controles.querySelector('.boton-pausa');
     const barraProgreso = controles.querySelector('.barra-progreso');
     const tiempoVideo = controles.querySelector('.tiempo-video');
     const barraVolumen = controles.querySelector('.barra-volumen');
+    const botonVolumen = controles.querySelector('.boton-volumen');
+    
     let temporizadorControles;
+    let estaArrastrando = false;
+
     const mostrarControles = function() {
         marcoVideo.classList.remove('controles-ocultos');
         clearTimeout(temporizadorControles);
         if (!video.paused) {
             temporizadorControles = setTimeout(function() {
                 marcoVideo.classList.add('controles-ocultos');
-            }, 1500);
+            }, 2500);
         }
     };
 
-    botonPausa.addEventListener('click', function() {
+    const alternarReproduccion = function() {
+        if (marcoVideo.querySelector('.countdown-overlay')) return; 
         if (video.paused) video.play(); else video.pause();
+    };
+
+    botonPausa.addEventListener('click', alternarReproduccion);
+    video.addEventListener('click', alternarReproduccion);
+
+    // Evento para pausar/reproducir con la barra espaciadora
+    document.addEventListener('keydown', function(evento) {
+        if (evento.code === 'Space' && !marcoVideo.querySelector('.countdown-overlay')) {
+            evento.preventDefault(); 
+            alternarReproduccion();
+            mostrarControles();
+        }
     });
+
     video.addEventListener('play', function() {
         marcoVideo.classList.add('reproduciendo');
         mostrarControles();
         botonPausa.setAttribute('aria-label', 'Pausar video');
-        botonPausa.innerHTML = '<span class="icono-pausa"></span>';
+        botonPausa.innerHTML = svgPause;
     });
+
     video.addEventListener('pause', function() {
         mostrarControles();
         botonPausa.setAttribute('aria-label', 'Reproducir video');
-        botonPausa.innerHTML = '<span class="triangulo-reproducir"></span>';
+        botonPausa.innerHTML = svgPlay;
     });
+
     video.addEventListener('timeupdate', function() {
-        barraProgreso.value = video.duration ? (video.currentTime / video.duration) * 100 : 0;
-        const minutos = Math.floor(video.currentTime / 60);
-        const segundos = String(Math.floor(video.currentTime % 60)).padStart(2, '0');
-        tiempoVideo.textContent = `${minutos}:${segundos}`;
+        if (!estaArrastrando) {
+            barraProgreso.value = video.duration ? (video.currentTime / video.duration) * 100 : 0;
+        }
+        
+        const formateaTiempo = (tiempo) => {
+            if (isNaN(tiempo)) return "0:00";
+            const min = Math.floor(tiempo / 60);
+            const seg = String(Math.floor(tiempo % 60)).padStart(2, '0');
+            return `${min}:${seg}`;
+        };
+        tiempoVideo.textContent = `${formateaTiempo(video.currentTime)} / ${formateaTiempo(video.duration)}`;
     });
+
+    // Eventos para que la barra de progreso no pelee al adelantar el video
+    barraProgreso.addEventListener('mousedown', () => estaArrastrando = true);
+    barraProgreso.addEventListener('touchstart', () => estaArrastrando = true, {passive: true});
+    
     barraProgreso.addEventListener('input', function() {
-        if (video.duration) video.currentTime = (barraProgreso.value / 100) * video.duration;
+        if (video.duration) {
+            video.currentTime = (barraProgreso.value / 100) * video.duration;
+        }
     });
-    controles.querySelector('.boton-volumen').addEventListener('click', function() {
+
+    barraProgreso.addEventListener('change', () => estaArrastrando = false);
+    barraProgreso.addEventListener('touchend', () => estaArrastrando = false);
+    barraProgreso.addEventListener('mouseup', () => estaArrastrando = false);
+
+    botonVolumen.addEventListener('click', function() {
         video.muted = !video.muted;
         barraVolumen.value = video.muted ? 0 : video.volume * 100;
+        this.innerHTML = video.muted ? svgVolOff : svgVolOn;
         this.setAttribute('aria-label', video.muted ? 'Activar sonido' : 'Silenciar video');
     });
+
     barraVolumen.addEventListener('input', function() {
         video.volume = barraVolumen.value / 100;
         video.muted = video.volume === 0;
+        botonVolumen.innerHTML = video.muted ? svgVolOff : svgVolOn;
     });
+
     controles.querySelector('.boton-pantalla').addEventListener('click', function() {
         if (document.fullscreenElement) document.exitFullscreen();
         else {
             marcoVideo.classList.add('pantalla-completa');
-            marcoVideo.requestFullscreen().catch(function() {
+            marcoVideo.requestFullscreen().catch(() => {
                 marcoVideo.classList.remove('pantalla-completa');
             });
         }
     });
+
     document.addEventListener('fullscreenchange', function() {
         if (!document.fullscreenElement) marcoVideo.classList.remove('pantalla-completa');
     });
-    video.addEventListener('click', mostrarControles);
+
     marcoVideo.addEventListener('mouseenter', mostrarControles);
     marcoVideo.addEventListener('mousemove', mostrarControles);
     marcoVideo.addEventListener('mouseleave', function() {
@@ -188,6 +256,7 @@ function crearControlesVideo(video, marcoVideo, botonReproducir) {
             }, 1500);
         }
     });
+
     marcoVideo.append(video, botonReproducir, controles);
 }
 
@@ -206,8 +275,8 @@ function crearVideo() {
     botonReproducir.type = 'button';
     botonReproducir.innerHTML = '<span class="triangulo-reproducir" aria-hidden="true"></span><span>' + historia.boton + '</span>';
     botonReproducir.setAttribute('aria-label', `Reproducir ${historia.titulo}`);
+    
     botonReproducir.addEventListener('click', function() {
-        // Mostrar overlay de countdown
         const overlay = document.createElement('div');
         overlay.className = 'countdown-overlay';
         marcoVideo.append(overlay);
@@ -230,7 +299,6 @@ function crearVideo() {
                 }, 100);
             } else {
                 clearInterval(intervalo);
-                // Después del countdown, esperar 0.8 segundos en negro y luego reproducir
                 contador.textContent = '';
                 setTimeout(function() {
                     overlay.remove();

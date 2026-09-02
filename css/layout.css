@@ -130,77 +130,6 @@ header.scrolled {
     border-left: 12px solid white;
 }
 
-.controles-video {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 34px 18px 14px;
-    background: linear-gradient(transparent, rgba(0, 0, 0, .9));
-    transition: opacity .25s ease;
-}
-
-.control-video {
-    display: grid;
-    flex: 0 0 30px;
-    width: 30px;
-    height: 30px;
-    place-items: center;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-}
-
-.control-video:hover { color: #e50914; }
-
-.icono-pausa {
-    width: 12px;
-    height: 14px;
-    border-right: 4px solid currentColor;
-    border-left: 4px solid currentColor;
-}
-
-.controles-video .triangulo-reproducir { border-top-width: 7px; border-bottom-width: 7px; border-left-width: 10px; }
-
-.icono-volumen {
-    width: 14px;
-    height: 12px;
-    border-right: 2px solid currentColor;
-    border-radius: 0 12px 12px 0;
-}
-
-.icono-volumen::before {
-    display: block;
-    width: 7px;
-    height: 12px;
-    background: currentColor;
-    content: '';
-    clip-path: polygon(0 30%, 45% 30%, 100% 0, 100% 100%, 45% 70%, 0 70%);
-}
-
-.icono-pantalla {
-    width: 15px;
-    height: 12px;
-    border: 2px solid currentColor;
-    border-radius: 2px;
-}
-
-.barra-progreso {
-    flex: 1;
-    min-width: 60px;
-    height: 4px;
-    accent-color: #e50914;
-    cursor: pointer;
-}
-
-.tiempo-video { min-width: 32px; color: #ddd; font-size: 12px; }
-
 .dedicatoria {
     max-width: 720px;
     margin-top: 30px;
@@ -230,14 +159,112 @@ header.scrolled {
 .collage--five img:first-child { grid-column: span 2; }
 .collage--six { grid-template-columns: repeat(3, 1fr); }
 
-.barra-volumen {
-    width: 74px;
-    height: 4px;
+
+.controles-video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    transition: opacity 0.3s ease;
+}
+
+.progreso-contenedor {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.barra-progreso, .barra-volumen {
     accent-color: #e50914;
     cursor: pointer;
 }
 
-/* COUNTDOWN OVERLAY */
+.barra-progreso {
+    width: 100%;
+    height: 4px;
+    transition: height 0.2s ease;
+}
+
+.barra-progreso:hover {
+    height: 6px;
+}
+
+.controles-inferiores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.controles-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.controles-derecha {
+    display: flex;
+    align-items: center;
+}
+
+.control-video {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.85;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.control-video:hover {
+    opacity: 1;
+    transform: scale(1.15);
+    color: #e50914;
+}
+
+.icono-svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+.control-volumen-grupo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.barra-volumen {
+    width: 0;
+    height: 4px;
+    opacity: 0;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.control-volumen-grupo:hover .barra-volumen,
+.barra-volumen:active, 
+.barra-volumen:focus {
+    width: 70px;
+    opacity: 1;
+}
+
+.tiempo-video {
+    font-size: 14px;
+    color: #e5e5e5;
+    font-family: 'Arial', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    user-select: none;
+}
+
 .countdown-overlay {
     position: absolute;
     inset: 0;
@@ -266,90 +293,36 @@ header.scrolled {
 }
 
 @keyframes countdownPulse {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.15);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+    0% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.15); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes fadeInOverlay {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@media (max-width: 768px) {
-    .countdown-numero {
-        font-size: 80px;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @media (max-width: 1024px) {
-    .hero {
-        padding: 0 24px 28px;
-    }
-
-    .hero-content {
-        max-width: 460px;
-    }
+    .hero { padding: 0 24px 28px; }
+    .hero-content { max-width: 460px; }
 }
 
 @media (max-width: 768px) {
-    header {
-        gap: 8px;
-        padding: 14px 16px;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .hamburguesa {
-        display: block;
-        margin-left: 0;
-        font-size: 26px;
-    }
-
-    .acciones-nav {
-        display: flex;
-        gap: 8px;
-        margin-left: auto;
-    }
-
-    .perfil-nav {
-        display: grid;
-        width: 32px;
-        height: 32px;
-    }
-
+    .countdown-numero { font-size: 80px; }
+    
+    header { gap: 8px; padding: 14px 16px; }
+    .logo { font-size: 20px; }
+    .hamburguesa { display: block; margin-left: 0; font-size: 26px; }
+    .acciones-nav { display: flex; gap: 8px; margin-left: auto; }
+    .perfil-nav { display: grid; width: 32px; height: 32px; }
     .flecha-nav { display: none; }
     .buscador-nav.activo { width: 145px; }
     #busqueda { width: 145px; }
-
-    .carta {
-        width: 140px;
-    }
-
-    .carta:hover {
-        transform: none;
-    }
+    .carta { width: 140px; }
+    .carta:hover { transform: none; }
     
-    nav.menu {
-        position: static;
-        margin-left: 0;
-    }
-
+    nav.menu { position: static; margin-left: 0; }
     nav.menu ul {
         display: none;
         flex-direction: column;
@@ -366,25 +339,11 @@ header.scrolled {
         border-radius: 12px;
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     }
-
-    nav.menu ul.active {
-        display: flex;
-    }
-
-    nav.menu a {
-        padding: 8px 12px;
-        font-size: 14px;
-        white-space: nowrap;
-    }
-
-    .hero {
-        padding: 0 20px 40px;
-    }
-
-    .hero-content {
-        max-width: 100%;
-    }
-
+    nav.menu ul.active { display: flex; }
+    nav.menu a { padding: 8px 12px; font-size: 14px; white-space: nowrap; }
+    
+    .hero { padding: 0 20px 40px; }
+    .hero-content { max-width: 100%; }
     .hero-content h1 {
         max-width: 300px;
         font-size: 22px;
@@ -392,35 +351,24 @@ header.scrolled {
         line-height: 1.15;
         margin-bottom: 12px;
     }
-
-    .hero-content p {
-        font-size: 14px;
-        margin-bottom: 16px;
-    }
-
-    .fila {
-        padding: 24px 20px;
-    }
-
-    .fila h2 {
-        font-size: 20px;
-    }
-
-    .carta img {
-        height: 100%;
-    }
-
+    .hero-content p { font-size: 14px; margin-bottom: 16px; }
+    
+    .fila { padding: 24px 20px; }
+    .fila h2 { font-size: 20px; }
+    .carta img { height: 100%; }
     .notificacion-mensaje { top: 70px; right: 16px; }
-    .controles-video { gap: 6px; padding: 30px 10px 10px; }
-    .control-video { flex-basis: 28px; width: 28px; }
-    .barra-volumen { width: 55px; }
+    
+    .controles-izquierda { gap: 12px; }
+    .icono-svg { width: 24px; height: 24px; }
+    .control-volumen-grupo:hover .barra-volumen,
+    .barra-volumen:active, 
+    .barra-volumen:focus { width: 55px; }
+    .tiempo-video { font-size: 12px; }
+    
     .vista-seccion .fila { padding-top: 86px; }
     .vista-busqueda .fila { padding-top: 86px; }
     .vista-busqueda .fila-cartas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    .seccion-catalogo.activa {
-        display: block;
-        min-height: 0;
-    }
+    .seccion-catalogo.activa { display: block; min-height: 0; }
     .seccion-catalogo.activa h2 { margin-bottom: 12px; }
     .seccion-catalogo.activa .dedicatoria-seccion {
         max-width: none;

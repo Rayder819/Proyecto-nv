@@ -260,6 +260,7 @@ nav.menu a.activo {
     margin-bottom: 16px;
 }
 
+.seccion-catalogo { display: block; }
 .seccion-catalogo.oculta { display: none; }
 .seccion-catalogo.sin-resultados { display: none; }
 .dedicatoria-seccion { display: none; }
@@ -268,12 +269,10 @@ nav.menu a.activo {
 
 .vista-busqueda .fila {
     padding-top: 110px;
-    animation: aparecer-seccion .6s ease both;
 }
 
 .vista-busqueda .seccion-catalogo {
     display: block;
-    animation: aparecer-texto .5s ease both;
 }
 
 .vista-busqueda .fila-cartas {
@@ -287,7 +286,6 @@ nav.menu a.activo {
 .vista-busqueda .carta {
     width: 100%;
     min-width: 0;
-    animation: aparecer-carta .45s ease both;
 }
 
 .vista-busqueda .carta:nth-child(2) { animation-delay: .08s; }
@@ -303,7 +301,6 @@ nav.menu a.activo {
     gap: 12px 38px;
     align-items: center;
     min-height: 420px;
-    animation: aparecer-seccion .7s ease both;
 }
 
 .seccion-catalogo.activa h2 {
@@ -313,7 +310,6 @@ nav.menu a.activo {
     margin-bottom: 0;
     font-family: 'Arvo', sans-serif;
     font-size: clamp(30px, 4vw, 52px);
-    animation: aparecer-texto .7s .1s ease both;
 }
 
 .seccion-catalogo.activa .dedicatoria-seccion {
@@ -326,7 +322,6 @@ nav.menu a.activo {
     font-family: 'Arvo', sans-serif;
     font-size: 17px;
     line-height: 1.75;
-    animation: aparecer-texto .7s .22s ease both;
 }
 
 .seccion-catalogo.activa .fila-cartas {
@@ -343,7 +338,6 @@ nav.menu a.activo {
 .seccion-catalogo.activa .carta {
     width: 100%;
     min-width: 0;
-    animation: aparecer-carta .55s ease both;
 }
 
 .seccion-catalogo.activa .carta:nth-child(1) { animation-delay: .12s; }
