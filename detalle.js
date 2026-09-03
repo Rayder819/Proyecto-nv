@@ -86,7 +86,7 @@ const historias = {
     especialVideo1: {
         titulo: 'Un recuerdo especial', meta: 'Video · Especial', tipo: 'video', archivo: 'videos/videoespecial.mp4',
         boton: 'Abrir este recuerdo',
-        texto: 'Este momento merece su propia pantalla porque tú haces especial cada parte de mi vida.'
+        texto: 'Este momento merece su propia pantalla porque hacer esto contigo fue algo especial y distinto que abrio un poco mas mi corazon'
     },
     especialCollage1: {
         titulo: 'Solo tú', meta: 'Collage · Especial', tipo: 'collage', cantidad: 6, forma: 'six',
@@ -111,7 +111,7 @@ const historias = {
             'fotosia/especial/collage2/foto7.jpg',
             'fotosia/especial/collage2/foto8.jpg'
         ],
-        texto: 'Lo nuestro tiene una magia que aparece en los detalles más simples.'
+        texto: 'Lo mejor de nuestras primeras vacaciones solitos jiji.'
     }
 };
 
