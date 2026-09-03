@@ -102,12 +102,12 @@ const historias = {
         archivos: [
             'fotosia/especial/collage2/video1.MP4',
             'fotosia/especial/collage2/video2.MP4',
-            'fotosia/especial/collage2/foto1.JPG',
-            'fotosia/especial/collage2/foto2.JPG',
-            'fotosia/especial/collage2/foto3.JPEG',
-            'fotosia/especial/collage2/foto4.JPG',
-            'fotosia/especial/collage2/foto5.JPG',
-            'fotosia/especial/collage2/foto6.JPEG',
+            'fotosia/especial/collage2/foto1.jpg',
+            'fotosia/especial/collage2/foto2.jpg',
+            'fotosia/especial/collage2/foto3.jpeg',
+            'fotosia/especial/collage2/foto4.jpg',
+            'fotosia/especial/collage2/foto5.jpg',
+            'fotosia/especial/collage2/foto6.jpeg',
             'fotosia/especial/collage2/foto7.jpg',
             'fotosia/especial/collage2/foto8.jpg'
         ],
