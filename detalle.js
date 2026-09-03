@@ -5,7 +5,7 @@ const historias = {
         tipo: 'video',
         archivo: 'videos/video2.mp4',
         boton: 'Reproducir nuestro momento',
-        texto: 'Cada segundo de este video me recuerda lo bonito que es compartir la vida contigo. Feliz cumple mes, mi amor.'
+        texto: 'OKEI ESTE ES EL QUE ME DA CRINGE PERO ES HERMOSO Y LO HICE SOLO PARA TI, TEA MO MI LOKITA PASA A VIA 💘'
     },
     coleccionVideo1: {
         titulo: 'Nuestra película',
@@ -13,81 +13,105 @@ const historias = {
         tipo: 'video',
         archivo: 'videos/video3.mp4',
         boton: 'Reproducir nuestra película',
-        texto: 'Contigo, hasta los días más sencillos se convierten en recuerdos que quiero volver a vivir.'
+        texto: 'Estando junto a ti, es una sensacion que no puedo parar de repetir y es por eso que cada momento a tu lado es como una película que quiero volver a ver una y otra vez.'
     },
     coleccionCollage1: {
         titulo: 'Pequeños instantes',
         meta: 'Collage · Recuerdos favoritos',
         tipo: 'collage',
-        cantidad: 3,
-        forma: 'three',
+        cantidad: 4,
+        forma: 'four',
         archivos: [
             'fotosia/coleccion/collage1/video1.mp4', 
             'fotosia/coleccion/collage1/foto1.jpg',
-            'fotosia/coleccion/collage1/video2.mp4'
+            'fotosia/coleccion/collage1/video2.mp4',
+            'fotosia/coleccion/collage1/foto2.jpeg'
         ],
-        texto: 'No necesito una ocasión enorme para celebrar lo nuestro. Me basta con cada pequeño instante a tu lado.'
+        texto: 'No necesito una ocasión enorme para celebrar lo nuestro. Me basta con cada pequeño instante a tu lado. '
     },
     coleccionCollage2: {
         titulo: 'Tú y yo',
         meta: 'Collage · Dos corazones, una historia',
         tipo: 'collage',
-        cantidad: 5,
+        cantidad: 4,
         forma: 'four',
+        archivos: [
+            'fotosia/coleccion/collage2/video1.mp4',
+            'fotosia/coleccion/collage2/img1.jpeg',
+            'fotosia/coleccion/collage2/video2.mp4',
+            'fotosia/coleccion/collage2/img2.jpg'
+        ],
         texto: 'Gracias por ser mi lugar favorito, por tu forma de quererme y por hacer que todo se sienta más bonito.'
     },
     coleccionCollage3: {
         titulo: 'Para siempre volvería a elegirte',
         meta: 'Collage · Una dedicatoria',
         tipo: 'collage',
-        cantidad: 5,
-        forma: 'five',
-        texto: 'Te elegiría en esta historia y en todas las que nos queden por vivir. Te amo muchísimo.'
+        cantidad: 4,
+        forma: 'four',
+        archivos: [
+            'fotosia/coleccion/collage3/video1.mp4',
+            'fotosia/coleccion/collage3/img1.jpeg',
+            'fotosia/coleccion/collage3/video3.mp4',
+            'fotosia/coleccion/collage3/video2.mp4'
+        ],
+        texto: "Bueno y este es el último, antes de que pases a los otros jaja, quiero decirte que te amo demasiadooo, que me encanta hacer este tipo de cosas para ti porque de verdad que te mereces esto y mucho más amor mío, de verdad que agradezco pasar esta única vida que tengo junto a ti y 'ya las paletas' (contexto 2do video) JKDFHFK"
     },
     nosotrosCollage1: {
-        titulo: 'Lo que somos', meta: 'Collage · Nosotros', tipo: 'collage', cantidad: 6, forma: 'six',
+        titulo: 'Lo que somos', meta: 'Collage · Nosotros', tipo: 'collage', cantidad: 4, forma: 'four',
+        archivos: ['fotosia/nosotros/collage1/video1.mp4', 'fotosia/nosotros/collage1/foto1.jpeg', 'fotosia/nosotros/collage1/video2.mp4', 'fotosia/nosotros/collage1/foto2.jpeg'],
         texto: 'Me encanta nuestra forma de ser, de reírnos y de construir recuerdos que solo nosotros entendemos.'
     },
     nosotrosVideo1: {
-        titulo: 'Un día contigo', meta: 'Video · Nosotros', tipo: 'video', archivo: 'videos/video1.mp4',
-        boton: 'Ver un día contigo',
-        texto: 'Gracias por llenar mis días de calma, risas y momentos que guardo con todo mi corazón.'
+        titulo: 'LO MAS TIERNO QUE VERAS AQUI', meta: 'Video · Nosotros', tipo: 'video', archivo: 'videos/video4.mp4',
+        boton: 'Ver LO MAS TIERNO?',
+        texto: 'Es super random SDJGJSDGSJ te amo.'
     },
     nosotrosCollage2: {
         titulo: 'Nuestro rincón', meta: 'Collage · Nosotros', tipo: 'collage', cantidad: 4, forma: 'four',
-        texto: 'Contigo cualquier lugar se siente como casa.'
+        archivos: ['fotosia/nosotros/collage2/video1.mp4', 'fotosia/nosotros/collage2/foto1.jpeg', 'fotosia/nosotros/collage2/video2.mp4', 'fotosia/nosotros/collage2/foto2.jpeg'],
+        texto: 'Amo esa foto en donde estas tutito y se te forma una burbujita de saliva KAJKAJSKJS.'
     },
     nosotrosCollage3: {
-        titulo: 'Momentos que quedan', meta: 'Collage · Nosotros', tipo: 'collage', cantidad: 3, forma: 'three',
+        titulo: 'Momentos que quedan', meta: 'Collage · Nosotros', tipo: 'collage', cantidad: 4, forma: 'four',
+        archivos: ['fotosia/nosotros/collage3/video1.mp4', 'fotosia/nosotros/collage3/foto1.jpeg', 'fotosia/nosotros/collage3/video2.mp4', 'fotosia/nosotros/collage3/video3.mp4'],
         texto: 'Estos recuerdos son pequeños pedacitos de una historia enorme: la nuestra.'
     },
     nosotrosVideo2: {
-        titulo: 'Siempre juntos', meta: 'Video · Nosotros', tipo: 'video',
-        archivo: 'videos/video2.mp4',
-        boton: 'Reproducir siempre juntos',
-        texto: 'Qué suerte la mía poder compartir este camino contigo.'
+        titulo: 'MAS TIERNOS', meta: 'Video · Nosotros', tipo: 'video',
+        archivo: 'videos/video5.mp4',
+        boton: 'Reproducir MAS TIERNOS',
+        texto: 'okei si es random espero te hayas reido y no enojado DSJKGKLGJL te amo.'
     },
     especialVideo1: {
-        titulo: 'Un recuerdo especial', meta: 'Video · Especial', tipo: 'video', archivo: 'videos/video1.mp4',
+        titulo: 'Un recuerdo especial', meta: 'Video · Especial', tipo: 'video', archivo: 'videos/videoespecial.mp4',
         boton: 'Abrir este recuerdo',
         texto: 'Este momento merece su propia pantalla porque tú haces especial cada parte de mi vida.'
     },
     especialCollage1: {
-        titulo: 'Solo tú', meta: 'Collage · Especial', tipo: 'collage', cantidad: 5, forma: 'five',
-        texto: 'Mi persona favorita, mi lugar seguro y mi amor más bonito.'
+        titulo: 'Solo tú', meta: 'Collage · Especial', tipo: 'collage', cantidad: 6, forma: 'six',
+        archivos: ['fotosia/especial/collage1/video1.mp4', 'fotosia/especial/collage1/foto1.jpeg', 'fotosia/especial/collage1/video2.mp4', 'fotosia/especial/collage1/foto2.jpeg', 'fotosia/especial/collage1/video3.mp4', 'fotosia/especial/collage1/foto3.jpeg'],
+        texto: 'No tengo las fotos dandonte el anillo pero si tengo fotos de mi persona favorita, mi lugar seguro y mi amor más bonito.'
     },
     especialCollage2: {
-        titulo: 'Nuestra magia', meta: 'Collage · Especial', tipo: 'collage', cantidad: 6, forma: 'six',
+        titulo: 'Nuestra magia', 
+        meta: 'Collage · Especial', 
+        tipo: 'collage', 
+        cantidad: 10, 
+        forma: 'ten',
+        archivos: [
+            'fotosia/especial/collage2/video1.MP4',
+            'fotosia/especial/collage2/video2.MP4',
+            'fotosia/especial/collage2/foto1.JPG',
+            'fotosia/especial/collage2/foto2.JPG',
+            'fotosia/especial/collage2/foto3.JPEG',
+            'fotosia/especial/collage2/foto4.JPG',
+            'fotosia/especial/collage2/foto5.JPG',
+            'fotosia/especial/collage2/foto6.JPEG',
+            'fotosia/especial/collage2/foto7.jpg',
+            'fotosia/especial/collage2/foto8.jpg'
+        ],
         texto: 'Lo nuestro tiene una magia que aparece en los detalles más simples.'
-    },
-    especialVideo2: {
-        titulo: 'Para volver a mirar', meta: 'Video · Especial', tipo: 'video', archivo: 'videos/video2.mp4',
-        boton: 'Volver a vivirlo',
-        texto: 'Pondría este recuerdo en repeat, igual que todos los días que paso contigo.'
-    },
-    especialCollage3: {
-        titulo: 'Te amo', meta: 'Collage · Especial', tipo: 'collage', cantidad: 4, forma: 'four',
-        texto: 'No hay collage suficiente para guardar todo lo que siento por ti.'
     }
 };
 
@@ -368,10 +392,14 @@ function crearCollage() {
             });
             
             document.addEventListener('fullscreenchange', () => {
-                if (!document.fullscreenElement && videoCollage.muted) {
-                    videoCollage.muted = true;
-                    btnAudio.innerHTML = svgVolOff;
-                    btnAudio.style.color = 'white';
+                if (!document.fullscreenElement) {
+                    if (videoCollage.muted) {
+                        btnAudio.innerHTML = svgVolOff;
+                        btnAudio.style.color = 'white';
+                    } else {
+                        btnAudio.innerHTML = svgVolOn;
+                        btnAudio.style.color = '#e50914';
+                    }
                 }
             });
             contenedor.addEventListener('click', () => {
