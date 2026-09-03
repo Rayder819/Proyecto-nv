@@ -100,8 +100,8 @@ const historias = {
         cantidad: 10, 
         forma: 'ten',
         archivos: [
-            'fotosia/especial/collage2/video1.MP4',
-            'fotosia/especial/collage2/video2.MP4',
+            'fotosia/especial/collage2/video1.mp4',
+            'fotosia/especial/collage2/video2.mp4',
             'fotosia/especial/collage2/foto1.jpg',
             'fotosia/especial/collage2/foto2.jpg',
             'fotosia/especial/collage2/foto3.jpeg',
